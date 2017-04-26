@@ -45,6 +45,20 @@
 
   /*****************************************************************************
    *
+   * Adds service worker
+   *
+   ****************************************************************************/
+   if('serviceWorker' in navigator){
+     navigator.serviceWorker.register('/service-worker.js').then(function(registration){
+       console.log('Service worker registered', registration)
+     })
+   }
+
+
+
+
+  /*****************************************************************************
+   *
    * Event listeners for UI elements
    *
    ****************************************************************************/
