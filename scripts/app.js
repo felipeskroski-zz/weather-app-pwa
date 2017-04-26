@@ -3,6 +3,7 @@
   'use strict';
 
   var weatherAPIUrlBase = 'https://publicdata-weather.firebaseio.com/';
+  var darkSkyAPI = 'https://api.darksky.net/forecast/79fed7dde2c748d9ab5047a2715dbe70/-41.2865,174.7762?exclude=[minutely,hourly,flags]&units=ca'
 
   var injectedForecast = {
     key: 'newyork',
