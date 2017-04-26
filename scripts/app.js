@@ -139,6 +139,14 @@
       app.container.appendChild(card);
       app.visibleCards[data.key] = card;
     }
+    // Verify if data is newer than that we already have, if not, bail
+    var dateElem = card.querySelector('.date')
+    if(dateElem.getAttribute('data-dt') >= data.currently.time){
+      return;
+    }
+
+
+
     card.querySelector('.description').textContent = data.currently.summary;
     card.querySelector('.date').textContent =
       new Date(data.currently.time * 1000);
@@ -189,6 +197,17 @@
   app.getForecast = function(key, label) {
     var url = weatherAPIUrlBase + key + '.json';
     // Make the XHR to get the data, then update the card
+    if('caches' in window){
+      caches.match(url).then(function(response){
+        if(response){
+          response.json().then(function(json){
+            json.key = key;
+            json.label = label;
+            app.updateForecastCard(json)
+          })
+        }
+      })
+    }
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
       if (request.readyState === XMLHttpRequest.DONE) {
