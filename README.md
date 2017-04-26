@@ -28,6 +28,13 @@ npm install
 gulp serve
 ```
 
+## Push to github
+Update code on github
+```
+git push -u origin master
+```
+
+
 ## Deploy
 To deploy on firebase
 ```
